@@ -37,7 +37,7 @@ class FuzzRush():
         return self._make_matchdf() if output_fmt == 'df' else self._make_matchdict()
     
     def _awesome_cossim_top(self, ntop, lower_bound):
-        # To CSR Matrix, if needed
+        #Converting To CSR Matrix
         A = self.tfidf_vect.fit_transform(self.source_names).tocsr()
         B = self.tfidf_vect.fit_transform(self.target_names).transpose().tocsr()
         M, _ = A.shape
@@ -60,6 +60,7 @@ class FuzzRush():
         self.sprse_mtx = csr_matrix((data, indices, indptr), shape=(M,N))
     
     def _make_matchdf(self):
+        ''' Build dataframe for result return '''
         cx = self.sprse_mtx.tocoo()
         return pd.DataFrame(
             [(row, self.source_names[row], col, self.target_names[col], val)
@@ -68,6 +69,7 @@ class FuzzRush():
         )
     
     def _make_matchdict(self):
+        ''' Build dictionary for result return '''
         cx = self.sprse_mtx.tocoo()
         match_dict = {}
         for row, col, val in zip(cx.row, cx.col, cx.data):
