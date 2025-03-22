@@ -10,7 +10,7 @@ FuzzRush is a blazing-fast fuzzy string matching library leveraging **TF-IDF** a
 
 ## 🛠 Installation
 ```bash
-git clone https://github.com/your-username/FuzzRush.git
+git clone https://github.com/omkumar40/FuzzRush.git
 cd FuzzRush
 pip install -r requirements.txt
 ```
