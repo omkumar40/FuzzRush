@@ -1,0 +1,1 @@
+from .fuzzrush import FuzzRush
